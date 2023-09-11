@@ -12,7 +12,7 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float wait;
-
+    
     // Start is called before the first frame update
     void Start()
     {
