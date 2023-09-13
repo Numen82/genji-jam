@@ -15,6 +15,13 @@ public class PressurePlateScript : MonoBehaviour
         blockdepth = new Vector3(0.0f, -2.6f, 0.0f);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.transform.parent = transform;
+        }
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -31,6 +38,7 @@ public class PressurePlateScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             moveBack = true;
+            collision.transform.parent = null;
         }
     }
     // Update is called once per frame
