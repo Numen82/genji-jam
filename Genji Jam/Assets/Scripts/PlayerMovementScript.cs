@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -12,7 +13,9 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float wait;
+   
     
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.rotation = Quaternion.Euler(0, 0, 0); 
         float inputH = Input.GetAxisRaw("Horizontal");
 
         if (type == 0)
@@ -45,7 +49,11 @@ public class NewBehaviourScript : MonoBehaviour
                 StartCoroutine(WaitJump());
             }
         }
-        
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            ResetLevel();
+        }
     }
 
     public void Jump()
@@ -69,5 +77,10 @@ public class NewBehaviourScript : MonoBehaviour
     {
         yield return new WaitForSeconds(wait);
         myRigidBody.velocity = new Vector2(input * moveSpeed, myRigidBody.velocity.y);
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
