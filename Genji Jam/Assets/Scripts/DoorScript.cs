@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorScript : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class DoorScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && scriptAComponent.KeyCollected == true)
         {
             //instead of deleting the door, pass the player to next level
-            gameObject.SetActive(false);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

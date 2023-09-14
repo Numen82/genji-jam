@@ -6,13 +6,14 @@ public class PressurePlateScript : MonoBehaviour
 {
     public Vector3 originalPos;
     private Vector3 blockdepth;
-    bool moveBack = false;
+    public bool moveBack = false;
+    public int raiseGate = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         originalPos = transform.position;
-        blockdepth = new Vector3(0.0f, -2.6f, 0.0f);
+        blockdepth = new Vector3(0.0f, -1.755f, 0.0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,6 +31,7 @@ public class PressurePlateScript : MonoBehaviour
             {
                 transform.Translate(0, -0.01f, 0);
                 moveBack = false;
+                raiseGate = 1;
             }  
         }
     }
@@ -39,6 +41,7 @@ public class PressurePlateScript : MonoBehaviour
         {
             moveBack = true;
             collision.transform.parent = null;
+            raiseGate = 2;
         }
     }
     // Update is called once per frame
