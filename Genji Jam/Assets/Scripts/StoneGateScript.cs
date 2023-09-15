@@ -32,10 +32,10 @@ public class StoneGateScript : MonoBehaviour
     
     void Moveup()
     {
-        transform.Translate(0, 0.002f, 0);
+        transform.Translate(0, 0.1F, 0);
     }
     void Movedown()
     {
-        transform.Translate(0, -0.01f, 0);
+        transform.Translate(0, -0.15f, 0);
     }
 }

@@ -28,6 +28,7 @@ public class DoorScript : MonoBehaviour
     {
         spriteRenderer.sprite = newSprite;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //player passes level

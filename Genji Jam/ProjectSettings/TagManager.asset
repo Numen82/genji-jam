@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Even Backer Background
+    uniqueID: 2645030493
+    locked: 0
   - name: Background
     uniqueID: 3780611669
     locked: 0

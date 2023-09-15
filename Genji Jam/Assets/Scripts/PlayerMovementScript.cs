@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -33,13 +34,14 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Application.targetFrameRate = 60;
+
         float inputH = Input.GetAxisRaw("Horizontal");
         float inputV = Input.GetAxisRaw("Vertical");
 
-        
         if (type == 0)
         {
-            if (Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground")).distance < 0.1)
+            if (Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground")).distance < 0.5)
             {
                 canJump = true;
             }
@@ -61,6 +63,11 @@ public class NewBehaviourScript : MonoBehaviour
                 StartCoroutine(WaitJump());
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetLevel();
+        }
         
     }
 
@@ -80,5 +87,15 @@ public class NewBehaviourScript : MonoBehaviour
     public void stopCoroutines()
     {
         StopAllCoroutines();
+    }
+
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 }
